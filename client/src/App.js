@@ -24,7 +24,7 @@ const Home = ({ contents, searchTerm }) => {
             <div key={item._id} className="movie-card" onClick={() => setSelectedContent(item)}>
               <div className="poster-wrapper">
                 <img
-                  src={`http://localhost:5000/uploads/${item.imageUrl}`}
+                  src={`https://my-movie-app-sable-nine.vercel.app//uploads/${item.imageUrl}`}
                   alt={item.title}
                   className="poster-img"
                   onError={(e) => {
@@ -60,7 +60,7 @@ const Home = ({ contents, searchTerm }) => {
         <div className="modal-overlay" onClick={() => setSelectedContent(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-poster-wrapper">
-              <img src={`http://localhost:5000/uploads/${selectedContent.imageUrl}`} alt={selectedContent.title} className="modal-poster-img" />
+              <img src={`https://my-movie-app-sable-nine.vercel.app//uploads/${selectedContent.imageUrl}`} alt={selectedContent.title} className="modal-poster-img" />
             </div>
             <div className="modal-details">
               <h1 className="modal-title">{selectedContent.title}</h1>
@@ -104,7 +104,7 @@ const Admin = ({ contents, fetchContents }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/login', loginData);
+      const res = await axios.post('https://my-movie-app-sable-nine.vercel.app//api/admin/login', loginData);
       if (res.data.success) {
         setIsAuthenticated(true);
         sessionStorage.setItem("adminToken", "true");
@@ -123,11 +123,11 @@ const Admin = ({ contents, fetchContents }) => {
     try {
       const imageData = new FormData();
       imageData.append('image', imageFile);
-      const uploadRes = await axios.post('http://localhost:5000/api/upload', imageData, {
+      const uploadRes = await axios.post('https://my-movie-app-sable-nine.vercel.app//api/upload', imageData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       const finalData = { ...formData, imageUrl: uploadRes.data.filename };
-      await axios.post('http://localhost:5000/api/contents/add', finalData);
+      await axios.post('https://my-movie-app-sable-nine.vercel.app//api/contents/add', finalData);
       alert('အောင်မြင်စွာ တင်ပြီးပါပြီ!');
       setFormData({ title: '', description: '', type: 'movie', genre: '', videoUrl: '', rating: '', downloadUrl: '' });
       setImageFile(null);
@@ -140,7 +140,7 @@ const Admin = ({ contents, fetchContents }) => {
   const deleteContent = async (id) => {
     if (window.confirm('တကယ်ဖျက်မှာ သေချာပါသလား?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/contents/${id}`);
+        await axios.delete(`https://my-movie-app-sable-nine.vercel.app//api/contents/${id}`);
         alert('ဖျက်ပြီးပါပြီ');
         fetchContents();
       } catch (err) {
