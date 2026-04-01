@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB Connection
-mongoose.connect('mongodb://127.0.0.1:27017/movie_story_db')
+mongoose.connect('mongodb+srv://zinkokoyell_db_user:Zkky686408@cluster0.vo2hjtt.mongodb.net/movie_story_db?appName=Cluster0')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
