@@ -1,0 +1,639 @@
+.filter-dropdown-container {
+  display: flex;
+  justify-content: flex-end;
+  /* ညာဘက်ထောင့်သို့ ပို့ခြင်း */
+  align-items: center;
+  margin: 20px 5%;
+  gap: 10px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-select {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 1px solid #888;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filter-select:focus {
+  border-color: #61dafb;
+}
+
+/* Content List အပေါ်က နေရာလွတ်ကို ညှိရန် */
+.content-list {
+  margin-top: 10px;
+}
+
+.content-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content-card {
+  background: #282c34;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  text-align: left;
+}
+
+.badge {
+  background: #61dafb;
+  color: black;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.content-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+  gap: 10px;
+}
+
+.content-form input,
+.content-form textarea,
+.content-form select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.content-form button {
+  background-color: #61dafb;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* --- Navbar ဒီဇိုင်းအသစ် (ပုံထဲကအတိုင်း) --- */
+.navbar {
+  background: #888;
+  /* ပုံထဲကလို မီးခိုးရောင် background */
+  padding: 0.8rem 2rem;
+  /* အပေါ်အောက် အကျယ် */
+  display: flex;
+  justify-content: space-between;
+  /* ဘယ်နဲ့ညာ ခွဲပစ်မယ် */
+  align-items: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  text-decoration: none;
+  color: #333;
+  /* နာမည်အရောင်ကို အနက်ရောင်ဘက် သွားမယ် */
+}
+
+.nav-logo h1 {
+  font-size: 1.2rem;
+  /* စာလုံးအရွယ်အစား ညှိမယ် */
+  margin: 0;
+  font-weight: normal;
+}
+
+/* ညာဘက်က Menu အစုအဝေး */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  /* Menu တစ်ခုနဲ့တစ်ခု ကြားအကွာအဝေး */
+}
+
+.nav-link {
+  color: #333;
+  /* Menu အရောင်ကို အနက်ရောင်ဘက် သွားမယ် */
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: white;
+  /* Mouse တင်ရင် အဖြူရောင်ပြောင်းမယ် */
+}
+
+/* --- Search Container (Icon နှင့် Input အစုအဝေး) --- */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* --- Search Box ဖွင့်ထားချိန်တွင် Icon နှင့် Box ကြား အကွာအဝေး --- */
+.search-container.open {
+  gap: 15px;
+  /* Icon နှင့် Input box ကြားကို ၁၅ pixel ခွာပေးသည် */
+}
+
+/* --- Search Input Box (နဂိုအခြေအနေတွင် ဖျောက်ထားမည်) --- */
+.nav-search-input {
+  width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.4s ease;
+  /* ပေါ်လာသည့် Animation ကို ပိုချောမွေ့စေသည် */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* --- Search Box ပွင့်လာချိန်တွင် ပြသမည့် ဒီဇိုင်း --- */
+.search-container.open .nav-search-input {
+  width: 250px;
+  /* Box အကျယ် */
+  padding: 8px 15px;
+  padding-right: 35px;
+  /* စာသားနှင့် အမှားခြစ် Icon မထပ်စေရန် ညာဘက်တွင် နေရာချန်သည် */
+  background: #282c34;
+  border: 1px solid #444;
+  border-radius: 20px;
+  opacity: 1;
+  visibility: visible;
+  margin-right: 5px;
+  /* အပြင်ဘက် Icon နှင့် ထပ်မနေစေရန် margin ထည့်ထားသည် */
+}
+
+.nav-search-input:focus {
+  outline: none;
+  border-color: #61dafb;
+}
+
+/* --- Search Icon (မှန်ဘီလူး နှင့် အမှားခြစ်) --- */
+.nav-search-icon {
+  color: white;
+  font-size: 1.4rem;
+  /* Icon အရွယ်အစား */
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+/* --- ပိတ်သည့် (x) Icon ဖြစ်သွားချိန်တွင် အရောင်ပြောင်းရန် --- */
+.fa-times {
+  color: #ff4d4d;
+  /* ပိတ်သည့် Icon ကို အနီရောင်ဖျော့ဖျော့ပြသည် */
+  transform: rotate(90deg);
+  /* လှည့်ထွက်သွားသည့် ပုံစံလေးဖြစ်အောင် */
+}
+
+.nav-search-icon:hover {
+  color: #61dafb;
+}
+
+.admin-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #444;
+  padding: 10px;
+}
+
+.btn-delete {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search-bar {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 60%;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid #61dafb;
+  background: #282c34;
+  color: white;
+  font-size: 1rem;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #61dafb;
+}
+
+/* --- Home Page Movie Section Styles --- */
+.content-section {
+  margin: 30px 5%;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Horizontal Scroll Container */
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  /* ဘေးတိုက် scroll ရအောင် */
+  gap: 20px;
+  padding-bottom: 15px;
+  scrollbar-width: thin;
+  /* Firefox အတွက် scrollbar သေးသေးလေး */
+}
+
+/* Scrollbar ဒီဇိုင်း (Chrome/Safari အတွက်) */
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* ဇာတ်ကား Card တစ်ခုချင်းစီ */
+.movie-card {
+  flex: 0 0 calc(20% - 16px);
+  /* ၅ ကားစာ အတိအကျ (100% / 5) */
+  min-width: 150px;
+  /* ဖုန်းမှာကြည့်ရင် အရမ်းသေးမသွားအောင် */
+  text-align: center;
+  cursor: pointer;
+  /* နှိပ်လို့ရမှန်း သိအောင် */
+  transition: transform 0.2s;
+  /* Hover လုပ်ရင် Animation ထည့်ရန် */
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  /* Hover လုပ်ရင် နည်းနည်း ကြီးလာရန် */
+}
+
+.poster-wrapper {
+  width: 100%;
+  aspect-ratio: 2/3;
+  /* Poster ပုံစံမျိုး (Vertical) ဖြစ်အောင် */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* ပုံတွေ မပြဲသွားအောင် */
+}
+
+.movie-title {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.btn-watch {
+  display: inline-block;
+  background: #e50914;
+  /* Netflix Red */
+  color: white;
+  padding: 5px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.filter-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-buttons button {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #61dafb;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.filter-buttons button.active {
+  background: #61dafb;
+  color: black;
+}
+
+.file-input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.file-input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.file-input-group input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+/* --- Modal Styles (Popup window) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  /* Background ကို မှောင်လိုက်ခြင်း */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  /* အပြင်နှိပ်ရင် ပိတ်အောင် */
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  gap: 30px;
+  cursor: default;
+  /* အထဲနှိပ်ရင် မပိတ်အောင် */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-poster-wrapper {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.modal-poster-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-details {
+  flex-grow: 1;
+}
+
+.modal-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.modal-badge-group {
+  margin-bottom: 15px;
+}
+
+.modal-badge {
+  background: #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+.modal-description {
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.modal-rating {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+  /* ရွှေရောင် */
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn-watch-modal {
+  background: #61dafb;
+  color: white;
+}
+
+.btn-download {
+  background: #4caf50;
+  /* အစိမ်းရောင် */
+  color: white;
+}
+
+/* --- Home Page Styles --- */
+.content-section {
+  margin: 30px 5%;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 15px;
+}
+
+.movie-card {
+  flex: 0 0 160px;
+  /* ပုံအရွယ်အစား ပုံသေထားခြင်း */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.poster-wrapper {
+  width: 160px;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-title {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* --- Modal Popup Styles --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 700px;
+  width: 90%;
+  display: flex;
+  gap: 20px;
+}
+
+.modal-poster-wrapper {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.modal-poster-img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modal-details {
+  flex-grow: 1;
+}
+
+.modal-badge {
+  background: #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.modal-rating {
+  color: #f1c40f;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-watch-modal {
+  background: #3498db;
+}
+
+.btn-download {
+  background: #2ecc71;
+}
+
+.login-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.login-form {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-logout {
+  float: right;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
